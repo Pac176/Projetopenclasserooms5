@@ -1,0 +1,86 @@
+* {
+    /*border: 1px black solid;*/
+   
+}
+
+
+h1 {
+  margin-left: 1rem;
+
+  
+}
+h2{
+  font-size:1.5rem;
+}
+
+body {
+  background-color:#bdb4af; 
+ 
+}
+.navbar-brand {
+  display:flex;
+  font-family: 'belligerent_madnessregular';
+  font-size: 2rem;
+  color: #F3E9F1;
+ }
+
+.navbar {
+  background-color: #F3E9F1;
+  position: fixed;
+  z-index: 2; }
+
+.foot {
+  background-color: #F3E9F1;
+   }
+
+.jumbotron {
+  background-color: #797478;
+  color: #F3E9F1;
+  font-size: 2rem;
+  font-family: 'belligerent_madnessregular';
+  padding-top: 6rem; }
+
+.carousel {
+  max-width: 30rem;
+  margin: auto;
+  padding-top: 3rem;
+  padding-bottom: 1rem; }
+
+.teddies {
+    margin: 8rem 2rem 2rem 2rem ;
+    display: flex;
+    
+}
+
+.teddiesDetails {
+  justify-content: center;
+
+}
+
+
+.card-body {
+    display:flex;
+    flex-direction: column;
+    margin: 2rem 2rem 2rem 2rem ;
+}
+
+.card { 
+  box-shadow: rgb(139, 70, 141) 1px 1px 5px 0px;
+ 
+  }
+
+.card-text {
+  display:flex;
+  justify-content: center;
+  margin-top:3rem;
+  font-family: 'Source Sans Pro';
+  font-size: 1.5rem
+}
+
+.link {
+  text-decoration: none;
+}
+
+.cardDetail {
+  width : 100%;
+}
