@@ -1,4 +1,6 @@
-const urlTeddies = "http://localhost:3000/api/teddies";      // adresse API
+let urlTeddies = "http://localhost:3000/api/teddies";      // adresse API
+
+
 
 
 
@@ -24,7 +26,7 @@ const urlTeddies = "http://localhost:3000/api/teddies";      // adresse API
 
 ////////////fonction asynchrone permettant d'utiliser await derriere l'API fetch/////////////////////
 
-async function getDataFromApi() {
+ async function getDataFromApi() {
   try {
               
                 const reponse = await fetch(urlTeddies);
@@ -32,7 +34,8 @@ async function getDataFromApi() {
                 console.log(products)
                 showproductList(products); //appel de la fonction listeproducts 
                 choixproduct();              //appel de la fonction survol
-               
+                let pastille = document.querySelector(".pastillePanier")
+                if(localStorage.length>0) {pastille.innerHTML = localStorage.length}
         }   catch (erreur) {
               alert(`Erreur: ${erreur.message}`)
     };
@@ -47,20 +50,32 @@ async function getDataFromApi() {
     
     for (let i = 0; i < productsFromApi.length; i++) {
       let domproduct = document.createElement("product");
-      let item = productsFromApi[i]
+      let item = productsFromApi[i];
       target.appendChild(domproduct);
+      let colors =[]
+       for (let color of item.colors) {
+      colors.push(" " + color)
       domproduct.classList.add("teddie", "col-12", "col-md-6", "col-lg-4", "col-xl-3")
       domproduct.innerHTML = `<a href="product.html?id=${item._id}"<div style="text-decoration: none; color:black" href="">
-                                        <div class="card " id="${item.name}">
+                                        <div class="card cardListe" id="${item.name}">
                                             <div class="card-body">
                                                 <h2 style="font-family: 'Schoolbell', cursive;" class="card-title text-center">${item.name}</h2>
                                                 <img id="${item._id}" class="card-img-top" src="${item.imageUrl}" alt="...">
-                                                <p class="card-text "><strong>${item.price/100}€</strong></p>
+                                                <div id= "infoListePrix">
+                                                <p id="infoListe" class=" infoListe"><strong>Existe en ${item.colors.length} couleur(s): <br> ${colors} </strong></p>
+                                                <p class="card-text prixListe"><strong>${item.price/100}€</strong></p></div>
+                                                
                                             </div>
                                         </div>
                                       </div></a>`
+      
+      
+     
+        
+    } 
     
-    }
+   }
+   
 }
 
 ////////////////////////////////Fonction survol products/////////////////////////////////
@@ -79,4 +94,6 @@ function choixproduct() {
 //////////Appel de la page index//////////////////////////////
 
 
-getDataFromApi()
+//getDataFromApi()
+
+

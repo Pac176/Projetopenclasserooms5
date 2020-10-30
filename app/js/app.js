@@ -1,11 +1,14 @@
 
 
 
-// function detail () {
+function detail () {
   
-//   if (urlId == null) {
-//     getDataFromApi()
-//   } else {getDataIdFromApi()}
-// }
+  if (urlId == null) {
+    getDataFromApi()
+  } else { getDataIdFromApi() }
+  
+}
 
-// detail()
+detail()
+ 
+
