@@ -59,13 +59,13 @@ function showProductDetail(productFromApi) {
               option.innerHTML = `${value}`
   }
   
-  /////////////////////////////////////////////////////////////////////ajout AU     LOCALSTORAGE////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////ajout AU LOCALSTORAGE////////////////////////////////////////
     let btnPanier = document.querySelector("#btn_panier");
     let selectColor = document.querySelector(".selectpicker")
     console.log(productFromApi)
   btnPanier.addEventListener("click", function addToCart() {
       
-      if (selectColor.value == "selectionnez la couleur...") { alert("veuillez selectionner une couleur") }
+      if (selectColor.value == "selectionnez la couleur...") {return alert("veuillez selectionner une couleur") }
       else { productFromApi.colors = [selectColor.value] }
     localStorage.setItem(productFromApi.name + " & " + selectColor.value, JSON.stringify(productFromApi))
     location.reload()

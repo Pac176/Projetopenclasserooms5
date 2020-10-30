@@ -27,11 +27,12 @@ for (let value of produits) {
 
 for (let value of panier.products) {
     if (value) {
-        console.log(value)
-        let target = document.querySelector(".panier");      
+        
+        let target = document.querySelector(".panier");
         let importPanier = document.createElement("tr");
         target.appendChild(importPanier);
-        importPanier.innerHTML =` <td data-th="Produit">
+        
+        importPanier.innerHTML = ` <td data-th="Produit">
                                         <div class="row">
                                             <div class="col-md-3 text-left">
                                                 <img src=${value.imageUrl} alt=""
@@ -39,32 +40,47 @@ for (let value of panier.products) {
                                             </div>
                                             <div class="col-md-9 text-left mt-sm-2">
                                                 <h4>${value.name}</h4>
-                                                <p class="font-weight-light">${value.colors}</p>
+                                                <p class="font-weight-light"><em>Couleur: ${value.colors}</em></p>
                                             </div>
                                         </div>
                                     </td>
-                                    <td data-th="Price">${value.price/100}€</td>
+                                    <td data-th="Price">${value.price / 100}€</td>
                                     <td data-th="Quantity">
-                                        <input type="number" class="form-control form-control-lg text-center" value="1">
+                                    
+                                        <input type="number" class="qteOurs" >
                                     </td>
                                     <td class="actions" data-th="">
                                         <div class="text-right">
-                                            <button class="btn btn-white border-secondary bg-white btn-md mb-2">
-                                                <i class="fas fa-sync"></i>
+                                            <button class="recalculer btn btn-white border-secondary bg-white btn-md mb-2">
+                                                <i class="fas fa-sync">recalculer</i>
                                             </button>
-                                            <button class="btn btn-white border-secondary bg-white btn-md mb-2">
+                                            <button class=" btn btn-white border-secondary bg-white btn-md mb-2">
                                                 <i class="fas fa-trash"></i>
                                             </button>
+                                            <td class = "prixTotalOurs" data-th="Prix total"></td>
                                             <div></div>
                                         </div>
-                                    </td>
-                                `
-    }
+                                    </td>`;
+        
+        
+     
+
+
+
         
     }
+}      
+    
 
 
 
+
+
+
+   
+          
+
+             
 
 
 
@@ -78,6 +94,4 @@ for (let value of panier.products) {
 
 
 
-                               
-
-//  
+  
