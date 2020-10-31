@@ -1,8 +1,8 @@
-* {
-    /*border: 1px black solid;*/
+/* {
+    border: 1px black solid;
    
 }
-
+*/
 
 h1 {
   margin-left: 1rem;
@@ -133,3 +133,21 @@ body {
   width: 1rem
 }
 
+.btn-white{
+  font-size:0.6rem
+}
+
+.prixOurs, .prixTotalOurs{
+ 
+  font-size:1.5rem
+}
+
+.table td {
+  color:rgb(85, 9, 66);
+  vertical-align: middle;
+}
+
+
+.nbOurs {
+  width:4rem;
+}
