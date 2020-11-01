@@ -86,7 +86,8 @@ for (let value of recal) {
 for (let i = 0; i < reset.length; i++) {
     reset[i].addEventListener("click", function () {
         divpanier.removeChild(produit[i])
-        localStorage.removeItem()
+        localStorage.removeItem(panier.products[i].name + " & " + panier.products[i].colors)
+        confirm('Êtes vous sur de vouloir supprimer cet élément ?')
     })
 }   
 
