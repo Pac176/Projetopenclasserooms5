@@ -65,9 +65,9 @@ function showProductDetail(productFromApi) {
     console.log(productFromApi)
   btnPanier.addEventListener("click", function addToCart() {
       
-      if (selectColor.value == "selectionnez la couleur...") {return alert("veuillez selectionner une couleur") }
-      else { productFromApi.colors = [selectColor.value] }
-    localStorage.setItem(productFromApi.name + " & " + selectColor.value, JSON.stringify(productFromApi))
+      // if (selectColor.value == "selectionnez la couleur...") {return alert("veuillez selectionner une couleur") }
+      // else { productFromApi.colors = [selectColor.value] }
+    localStorage.setItem(productFromApi._id, JSON.stringify(productFromApi))
     location.reload()
     }) 
 }
