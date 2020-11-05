@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script defer src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/d414c43904.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap" rel="stylesheet">
+
+   
+
+    <script defer src="/app/js/validation.js"></script>
+
+    
+    
+
+
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body class="container-fluid">
+      <header class="row bg-light">
+        <nav class="col navbar navbar-expand-md bg-whitek navbar-light ">
+            <a class="navbar-brand" href="index.html"><img src="/ressources/logo1.svg" alt="Site logo">
+                <h1>Orinoco</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="navbarContent" class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto ">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="product.html"></a>
+                    </li>
+                </ul>
+
+                <div class="logoPanier">
+                    <p class="pastillePanier"></p>
+                    <a href="panier.html">
+                        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-cart2 text-dark"
+                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="validation"><br><br><br><br>
+<h2>Formulaire de validation</h2><br>
+    <h3>Recapitulatif de la commande</h3><br>
+        <div style="border:solid 1px black;" class="col-md-8 mb-8">
+            <div class="nbArticles">nb article(s):</div>
+            <div class="totalCommande">total</div>
+            <a href="panier.html">Retour au panier</a>
+        </div><br>
+    <h3>Coordonnees</h3>
+        <form class="form-row">
+             <div class="col-md-8 mb-6">
+                <div class="form-row">
+                    <div class="col-md-6 mb-6">
+                        <label for=""></label>
+                        <input type="text"  value="" title="votre prenom" pattern="[\D]{1,10}" class="form-control" id="firstName" placeholder="First name" autofocus
+                         required   >
+                        <div class="invalid-feedback">
+                            Please provide your first name.
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-6">
+                        <label for=""></label>
+                        <input type="text" title="votre nom" pattern="[\D]+" class="form-control" id="lastName" placeholder="Last name"
+                             required>
+                        <div class="invalid-feedback">
+                        Please provide your last name.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-6">
+                        <label for=""></label>
+                        <input type="text" pattern="[\w]+" class="form-control" id="address" placeholder="adresse" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid city.
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-6">
+                        <label for=""></label>
+                        <input type="text"  pattern="[\D]+" class="form-control" id="city" value="" placeholder="ville" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid zip.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    </div>
+                <div class="form-row">
+                    <div class="col-xl-6 md-6">
+                        <label for="validationServerUsername33"></label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="">@</span>
+                            </div>
+                            <input type="email" pattern="[a-z]+\.[a-z]{1,10}@.{1,15}" class="form-control" id="email"   placeholder="adresse email" aria-describedby="" required>
+                            <div class="invalid-feedback">
+                                Please choose an email.
+                            </div>
+                        </div>
+                    </div>
+                </div><br><br>
+                <button class="btn btn-success btn-sm validCommand"  type="submit">Valider la commande</button> <button class="btn btn-danger btn-sm annule" onclick="postData()" type="submit">annuler la commande</button>
+                </div>
+             </form>
+        </section><br><br>
+        <footer class="row text-center text-lg-left foot">
+            <!-- Copyright -->
+            <div class="col text-center text-dark p-3 ">© 2020 Copyright:
+                <a class=" text-dark" href="">Designed by Me.</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+</body>
+
+</html>
