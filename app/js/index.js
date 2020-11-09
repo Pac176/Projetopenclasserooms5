@@ -1,5 +1,5 @@
 let urlTeddies = "http://localhost:3000/api/teddies";      // adresse API
-
+ 
 
 
 
@@ -31,16 +31,16 @@ let urlTeddies = "http://localhost:3000/api/teddies";      // adresse API
               
                 const reponse = await fetch(urlTeddies);
                 products = await reponse.json();
-                console.log(products)
-                showproductList(products); //appel de la fonction listeproducts 
-                choixproduct();              //appel de la fonction survol
-                let pastille = document.querySelector(".pastillePanier")
-                if(localStorage.length>0) {pastille.innerHTML = localStorage.length}
+                return products 
+                
         }   catch (erreur) {
               alert(`Erreur: ${erreur.message}`)
     };
    
  }
+
+
+
 
 
 //////////////////////fonction affichage liste products////////////////////////////////
@@ -91,9 +91,23 @@ function choixproduct() {
   }
 
 
-//////////Appel de la page index//////////////////////////////
+
+  getDataFromApi().then(function (products) {
+    showproductList(products); //appel de la fonction listeproducts 
+    choixproduct();              //appel de la fonction survol
+    //let pastille = document.querySelector(".pastillePanier")
+    // if (localStorage.length > 0) {
+    // pastille.innerHTML = localStorage.length
+    // }
 
 
-//getDataFromApi()
+
+
+    
+})
+ 
+
+
+
 
 

@@ -1,4 +1,9 @@
 
+ new Cart(idProducts)
+
+
+
+
 
 
 //////////////////////////construction de l'url de chaque produit pour le 2e requete/////////////////////
@@ -17,8 +22,8 @@ console.log(urlApiId)
                 const reponse = await fetch(urlApiId);
                 let product = await reponse.json();
                 showProductDetail(product); //appel de la fonction productsdetail
-                let pastille = document.querySelector(".pastillePanier")
-                if(localStorage.length>0) {pastille.innerHTML = localStorage.length}
+                ///let pastille = document.querySelector(".pastillePanier")
+                ///if(localStorage.length>0) {pastille.innerHTML = localStorage.length}
         }   catch (erreur) {
               alert(`Erreur: ${erreur.message}`)
     };
@@ -63,15 +68,21 @@ function showProductDetail(productFromApi) {
     let btnPanier = document.querySelector("#btn_panier");
     let selectColor = document.querySelector(".selectpicker")
     console.log(productFromApi)
-  btnPanier.addEventListener("click", function addToCart() {
+  btnPanier.addEventListener("click", function () {
       
       if (selectColor.value == "selectionnez la couleur...") {return alert("veuillez selectionner une couleur") }
       // else { productFromApi.colors = [selectColor.value] }
-    localStorage.setItem(productFromApi._id, JSON.stringify(productFromApi))
-    location.reload()
+    
+      else {
+        
+        cartClass.addToCart(productFromApi)
+      }
+    
+    //localStorage.setItem(productFromApi._id, JSON.stringify(productFromApi))
+   
     }) 
 }
-////appel page product/////////////
 
 
-//getDataIdFromApi()
+
+getDataIdFromApi()

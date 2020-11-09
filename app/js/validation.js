@@ -1,9 +1,22 @@
-let contact = { firstName: "gege", lastName: "dsfd", address: "fe", city: "fezfesd", email:"dfe" }
+
+
+let contact = {}
 let products = []
 let panier = {}
 panier.products = []
 let valid = []
+let commandUser = { contact, products }
+let nbArticles = document.querySelector(".nbArticles")
+let importNbArticles = parseInt(sessionStorage.getItem("nombreitem"))
+nbArticles.innerHTML = `Nombre d'article(s): ${importNbArticles}`
+let totalCommand = document.querySelector(".totalCommande")
+let importTotalCommand = parseInt(sessionStorage.getItem("total"))
+totalCommand.innerHTML = `prix total: ${importTotalCommand}€`
+let validCommand =document.querySelector(".validCommand")
+let formControl = document.querySelectorAll(".form-control")
+let feedBack = document.querySelectorAll(".feedback")
 
+//////////////////////////////////generer products a partir de localstorage///////////////////////
 
 for(let i = 0; i < localStorage.length; i++) {
      products[i] = localStorage.key(i)
@@ -11,50 +24,31 @@ for(let i = 0; i < localStorage.length; i++) {
 }
 
 
-let commandUser = { contact, products }
-let nbArticles = document.querySelector(".nbArticles")
-let importNbArticles = parseInt(sessionStorage.getItem("nombreitem"))
-nbArticles.innerHTML = `Nombre d'article(s): ${importNbArticles}`
-let totalCommand = document.querySelector(".totalCommande")
-let importTotalCommand = parseInt(sessionStorage.getItem("total"))
-totalCommand.innerHTML = `Nombre d'article(s): ${importTotalCommand}€`
-let validCommand =document.querySelector(".validCommand")
-let formControl = document.querySelectorAll(".form-control")
-let feedBack = document.querySelectorAll(".feedback")
+//////////////////requete Post pour envoyer commandUser(contact + products)///////////////////////////////////
 
 async function postData() {
      const validCommande = await fetch("http://localhost:3000/api/teddies/order", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(commandUser)
-       
-    })
-    response = await validCommande.json();
-    alert(`${response.orderId}`)} 
+        method: 'POST', headers: {'Content-Type': 'application/json'},body: JSON.stringify(commandUser)
+        })
+        response = await validCommande.json();
+        alert(`${response.orderId}`)} 
 
-    
-        
-    
+//////////////////////////bouton de validation//////////////////////////////////////////////
+
+let form = document.querySelector("#order-form");
 
 
-    
+form.addEventListener("submit", function (event) {
+    event.preventDefault()
+    console.log("coucou")
 
-       
-        
-
-
-validCommand.addEventListener("click", async function () {
-    
-    
-    if ( valid.filter(function (value) { return value === true; }).length == 5)
+        if ( valid.filter(function (value) { return value === true; }).length == 5)
     {       postData()
-           
+     
     }
 })
 
-
+/////////////////////////////////////gestion du formulaire/////////////////////////////////
 
 
 for (let i = 0; i < formControl.length; i++) {
@@ -74,17 +68,16 @@ for (let i = 0; i < formControl.length; i++) {
              formControl[i].nextElementSibling.innerHTML = "ok!!";
           } 
                
-       
+////////////////////////////////////generer le contact///////////////////////////////       
     
-   
-              
-    //    for (let i = 0; i < formControl.length; i++){
-    //        if (formControl[i].classList.contains("is-valid")) {
-    //         console.log(formControl[i].classList.contains("is-valid"))
-    //             valid[i]= formControl[i].checkValidity()
-    //           contact[`${formControl[i].id}`] = `${formControl[i].value}`
-    //      } else {valid[i]= formControl[i].checkValidity()}
-    // } 
+               
+       for (let i = 0; i < formControl.length; i++){
+           if (formControl[i].classList.contains("is-valid")) {
+            console.log(formControl[i].classList.contains("is-valid"))
+                valid[i]= formControl[i].checkValidity()
+              contact[`${formControl[i].id}`] = `${formControl[i].value}`
+         } else {valid[i]= formControl[i].checkValidity()}
+    } 
    })
 }    
 
