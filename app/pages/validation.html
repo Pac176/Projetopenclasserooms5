@@ -21,6 +21,7 @@
 
    
 
+    <script  src="/app/js/panier.js"></script>
     <script defer src="/app/js/validation.js"></script>
 
     
@@ -31,7 +32,7 @@
     <title>Document</title>
 </head>
 
-<body class="container-fluid">
+<body  class="container-fluid">
       <header class="row bg-light">
         <nav class="col navbar navbar-expand-md bg-whitek navbar-light ">
             <a class="navbar-brand" href="index.html"><img src="/ressources/logo1.svg" alt="Site logo">
@@ -78,17 +79,17 @@
                 <div class="form-row">
                     <div class="col-md-6 mb-6">
                         <label for=""></label>
-                        <input type="text"  value="" title="votre prenom" pattern="[\D]{1,10}" class="form-control" id="firstName" placeholder="First name" autofocus
+                        <input type="text"   title="votre prenom" pattern="[\D]{1,10}" class="form-control" id="firstName" placeholder="First name" autofocus
                          required   >
-                        <div class="invalid-feedback">
+                        <div class="">
                             Please provide your first name.
                         </div>
                     </div>
                     <div class="col-md-6 mb-6">
                         <label for=""></label>
                         <input type="text" title="votre nom" pattern="[\D]+" class="form-control" id="lastName" placeholder="Last name"
-                             required>
-                        <div class="invalid-feedback">
+                             required >
+                        <div class="">
                         Please provide your last name.
                         </div>
                     </div>
@@ -96,16 +97,16 @@
                 <div class="form-row">
                     <div class="col-md-6 mb-6">
                         <label for=""></label>
-                        <input type="text" pattern="[\w]+" class="form-control" id="address" placeholder="adresse" required>
-                        <div class="invalid-feedback">
-                            Please provide a valid city.
+                        <input type="text"  pattern="[\w]+"  class="form-control" id="address" placeholder="adresse" required >
+                        <div class="">
+                            Please provide a valid address.
                         </div>
                     </div>
                     <div class="col-md-6 mb-6">
                         <label for=""></label>
                         <input type="text"  pattern="[\D]+" class="form-control" id="city" value="" placeholder="ville" required>
-                        <div class="invalid-feedback">
-                            Please provide a valid zip.
+                        <div class="">
+                            Please provide a valid city.
                         </div>
                     </div>
                 </div>
@@ -119,8 +120,8 @@
                                 <span class="input-group-text" id="">@</span>
                             </div>
                             <input type="email" pattern="[a-z]+\.[a-z]{1,10}@.{1,15}" class="form-control" id="email"   placeholder="adresse email" aria-describedby="" required>
-                            <div class="invalid-feedback">
-                                Please choose an email.
+                            <div class="">
+                                Please provide an email.
                             </div>
                         </div>
                     </div>

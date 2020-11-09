@@ -32,7 +32,7 @@
     <title>Document</title>
 </head>
 
-<body onload="" class="container-fluid">
+<body onload="cartClass.displayCart" class="container-fluid">
     <header class="row bg-light">
         <nav class="col navbar navbar-expand-md bg-whitek navbar-light ">
             <a class="navbar-brand" href="index.html"><img src="/ressources/logo1.svg" alt="Site logo">
@@ -93,7 +93,7 @@
             </div>
             <div class="row mt-4 d-flex align-items-center">
                 <div class="col-sm-6 order-md-2 text-right">
-                    <a href="validation.html"  onclick="exportSessionStorage()" class="btn btn-primary mb-4 btn-lg pl-5 pr-5">Valider la commande</a>
+                    <a id="passCommand"    class="btn btn-primary mb-4 btn-lg pl-5 pr-5">Passer la commande</a>
                 </div>
                 <div class="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
                     <a href="index.html">
@@ -111,7 +111,9 @@
 
 
 
-
+<div class="alert alert-warning" role="alert">
+    Vous n'avez rien commandé!!!
+</div>
 
         <footer class="row text-center text-lg-left foot">
             <!-- Copyright -->

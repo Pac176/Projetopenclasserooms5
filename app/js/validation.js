@@ -71,7 +71,10 @@ for (let i = 0; i < formControl.length; i++) {
     formControl[i].addEventListener("focusout", function () {
         let val = formControl[i].validity
             valid[i] = val.valid
-         if (formControl[i].value == "") { formControl[i].classList = "form-control is-invalid" }
+        if (formControl[i].value == "") {
+            formControl[i].classList = "form-control is-invalid";
+            formControl[i].nextElementSibling.classList = "invalid-feedback"
+        }
         
         else if (val.patternMismatch == false) {
              formControl[i].classList = "form-control is-valid";
@@ -93,6 +96,7 @@ for (let i = 0; i < formControl.length; i++) {
 
 
 
+cartClass.cartNotification
 
 
 

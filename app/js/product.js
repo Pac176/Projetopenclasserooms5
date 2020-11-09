@@ -1,8 +1,7 @@
-
- new Cart(idProducts)
-
+let urlTeddies = "http://localhost:3000/api/teddies"
 
 
+      
 
 
 
@@ -22,8 +21,7 @@ console.log(urlApiId)
                 const reponse = await fetch(urlApiId);
                 let product = await reponse.json();
                 showProductDetail(product); //appel de la fonction productsdetail
-                ///let pastille = document.querySelector(".pastillePanier")
-                ///if(localStorage.length>0) {pastille.innerHTML = localStorage.length}
+                
         }   catch (erreur) {
               alert(`Erreur: ${erreur.message}`)
     };
@@ -68,21 +66,31 @@ function showProductDetail(productFromApi) {
     let btnPanier = document.querySelector("#btn_panier");
     let selectColor = document.querySelector(".selectpicker")
     console.log(productFromApi)
-  btnPanier.addEventListener("click", function () {
+    btnPanier.addEventListener("click", function () {
       
       if (selectColor.value == "selectionnez la couleur...") {return alert("veuillez selectionner une couleur") }
-      // else { productFromApi.colors = [selectColor.value] }
+      
     
       else {
         
         cartClass.addToCart(productFromApi)
+        location.reload()
       }
     
-    //localStorage.setItem(productFromApi._id, JSON.stringify(productFromApi))
+   
    
     }) 
 }
 
 
+getDataIdFromApi().then(function () {
+                  
+                 cartClass.cartNotification
+}
 
-getDataIdFromApi()
+)
+
+
+
+
+

@@ -28,14 +28,21 @@ class Cart {
 
     get displayCart() {
         let nbItems = document.querySelector('.nbItems');
+        let passCommand = document.querySelector("#passCommand")
+        passCommand.addEventListener("click", function () {
+        cartClass.validCommand()
+        })
+        if (JSON.parse(localStorage.getItem("cart"))) {
+        
         for (let i = 0; i < this.products.length; i++) {
-            nbItems.innerHTML = this.products.length
-            prixPanier[i] = `${this.products[i].price / 100}`
-            let target = document.querySelector(".products");
-            let importPanier = document.createElement("tr");
-            importPanier.classList.add("produit")
-            target.appendChild(importPanier);
-            importPanier.innerHTML = `      
+                nbItems.innerHTML = this.products.length
+                localStorage.setItem("nombreitem", nbItems.innerHTML)
+                prixPanier[i] = `${this.products[i].price / 100}`
+                let target = document.querySelector(".products");
+                let importPanier = document.createElement("tr");
+                importPanier.classList.add("produit")
+                target.appendChild(importPanier);
+                importPanier.innerHTML = `      
                                         <td data-th="Produit">
                                         <div class="row">
                                             <div class="col-md-3 text-left">
@@ -64,29 +71,49 @@ class Cart {
                                     </td>`;
         
         }
+            this.prixTotal()
+            this.cartNotification
+            this.deleteFromCart()
+        
+        } else { }
        
-        this.prixTotal()
-        this.cartNotification
-        this.deleteFromCart()
+        
     }
     
 
     get cartNotification() {
-        let pastille = document.querySelector(".pastillePanier")
-        if (localStorage.length > 0) { pastille.innerHTML = localStorage.length }
+        if (JSON.parse(localStorage.getItem("cart"))) {
+            let pastille = document.querySelector(".pastillePanier")
+            pastille.innerHTML = this.products.length
+        } else { }
+        
     }
    
     deleteFromCart() {
         let divpanier = document.querySelector(".products")
         let reset = document.querySelectorAll(".reset");
-        console.log(reset[0])
         let produit = document.querySelectorAll(".produit");
         for (let i = 0; i < reset.length; i++) {
             reset[i].addEventListener("click", function () {
+                        
+        this.products = JSON.parse(localStorage.getItem("cart"))
+        this.products.splice(reset[i], 1)
+        console.log(this.products)
+        localStorage.setItem("cart", JSON.stringify(this.products))
+        divpanier.removeChild(produit[i]);
+        cartClass.prixTotal()
+        location.reload()
+       
+    
+
+
+
+
+
+
+
                 
-                localStorage.removeItem(cartClass.products[i]._id)
-                divpanier.removeChild(produit[i]);
-                cartClass.prixTotal()
+                
             })
         }
       
@@ -96,29 +123,33 @@ class Cart {
 
   
     prixTotal() {
-        
-        let prixTotal = document.querySelector(".prixTotal ");
-        let subTotal = document.querySelectorAll(".prixTotalOurs");
-        let nbOurs = document.querySelectorAll(".nbOurs");
-        let prixOurs = document.querySelectorAll(".prixOurs")
-        if (localStorage.length == 0) {
-            prixTotal.innerHTML = "0€"
-        } else {
-            const reducer = (accumulator, currentValue) => parseInt(accumulator) + parseInt(currentValue);
-            prixTotal.innerHTML = prixPanier.reduce(reducer) + "€";
-        }
-
-
-        for (let i = 0; i < subTotal.length; i++) {
-           
-            subTotal[i].innerHTML = nbOurs[i].value * parseInt(prixOurs[i].innerHTML) + "€";
-            nbOurs[i].addEventListener("change", function () {
-                subTotal[i].innerHTML = nbOurs[i].value * parseInt(prixOurs[i].innerHTML) + "€";
-                prixPanier[i] = parseInt(subTotal[i].innerHTML)
+        if (this.products.length > 0) {
+            let prixTotal = document.querySelector(".prixTotal ");
+            let subTotal = document.querySelectorAll(".prixTotalOurs");
+            let nbOurs = document.querySelectorAll(".nbOurs");
+            let prixOurs = document.querySelectorAll(".prixOurs")
+            if (localStorage.length == 0) {
+                prixTotal.innerHTML = "0€"
+            } else {
                 const reducer = (accumulator, currentValue) => parseInt(accumulator) + parseInt(currentValue);
                 prixTotal.innerHTML = prixPanier.reduce(reducer) + "€";
-            })
+                localStorage.setItem("total", prixTotal.innerHTML)
+            }
+
+
+            for (let i = 0; i < subTotal.length; i++) {
+           
+                subTotal[i].innerHTML = nbOurs[i].value * parseInt(prixOurs[i].innerHTML) + "€";
+                nbOurs[i].addEventListener("change", function () {
+                    subTotal[i].innerHTML = nbOurs[i].value * parseInt(prixOurs[i].innerHTML) + "€";
+                    prixPanier[i] = parseInt(subTotal[i].innerHTML)
+                    const reducer = (accumulator, currentValue) => parseInt(accumulator) + parseInt(currentValue);
+                    prixTotal.innerHTML = prixPanier.reduce(reducer) + "€";
+                    localStorage.setItem("total", prixTotal.innerHTML)
+                })
+            }
         }
+       
     }
  
 
@@ -135,33 +166,40 @@ class Cart {
             this.products = JSON.parse(localStorage.getItem("cart"))
             console.log(this.products)
             let test;
-                for (let product of this.products) {
+            for (let product of this.products) {
                 console.log(product._id == value._id)
                 if (product._id == value._id) { return test = true }
             }
-                if (test == true) {
-                    localStorage.setItem("cart", JSON.stringify(this.products))
-            }   else {
-                    this.products.push(value)
-                    localStorage.setItem("cart", JSON.stringify(this.products))}
+            if (test == true) {
+                localStorage.setItem("cart", JSON.stringify(this.products))
+            } else {
+                this.products.push(value)
+                localStorage.setItem("cart", JSON.stringify(this.products))
+            }
         
         } else {
             localStorage.setItem("cart", JSON.stringify([value]))
            
         }
     }
+    
+    validCommand() {
+       if (this.products.length > 0) {  
+                document.location.href = "http://127.0.0.1:5500/app/pages/validation.html"
+            }
+        }
+        
+
+        
+    
+
 }
 
 
 
-
-
 let cartClass = new Cart(idProducts)
-let display = function(){cartClass.displayCart}
-cartClass.displayCart 
 
-
-
+ 
 
 
 

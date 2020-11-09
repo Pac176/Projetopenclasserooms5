@@ -95,10 +95,7 @@ function choixproduct() {
   getDataFromApi().then(function (products) {
     showproductList(products); //appel de la fonction listeproducts 
     choixproduct();              //appel de la fonction survol
-    //let pastille = document.querySelector(".pastillePanier")
-    // if (localStorage.length > 0) {
-    // pastille.innerHTML = localStorage.length
-    // }
+    cartClass.cartNotification
 
 
 
