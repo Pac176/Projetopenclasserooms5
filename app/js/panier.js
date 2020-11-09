@@ -153,34 +153,6 @@ class Cart {
 }
 
 
-  
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //     if (localStorage.getItem("cart")) {
-    //         this.products = JSON.parse(localStorage.getItem("cart"))
-    //         console.log(this.products)
-    //         this.products.push(value)
-    //         localStorage.setItem("cart", JSON.stringify(this.products))
-    //     } else {
-    //        localStorage.setItem("cart", JSON.stringify([value]))
-    //     }
-    // }
-
-
-
 
 
 
