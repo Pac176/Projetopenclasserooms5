@@ -19,8 +19,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap" rel="stylesheet">
 
-    <script defer src="/app/js/panier.js"></script>
-    <!-- <script defer src="/app/js/cart.js"></script> -->
+    
+    
+    <script type= "module" defer src="/app/js/panier.js"></script>
+    
 
 
     
@@ -32,7 +34,7 @@
     <title>Document</title>
 </head>
 
-<body onload="cartClass.displayCart" class="container-fluid">
+<body  onload="" class=" container-fluid">
     <header class="row bg-light">
         <nav class="col navbar navbar-expand-md bg-whitek navbar-light ">
             <a class="navbar-brand" href="index.html"><img src="/ressources/logo1.svg" alt="Site logo">
@@ -51,7 +53,6 @@
                     </li>
                 </ul>
             <div class="logoPanier">
-                <p class="pastillePanier"></p>
                 <a href="panier.html">
                     <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-cart2 text-dark" fill="currentColor"
                         xmlns="http://www.w3.org/2000/svg">
@@ -63,20 +64,20 @@
             </div>
         </nav>
     </header>
-    <main>
-    <section class="pt-5 pb-5">
-        <div class="container"><br><br>
-            <div class="row w-100">
+    <main >
+    <section class="pt-5 pb-5"><br><br><br>
+        <div class="container panier"><br><br>
+            <div class="row w-100 ">
                 <div class="col-lg-12 col-md-12 col-12">
-                    <h3 class="display-5 mb-2 text-center">Shopping Cart</h3>
+                    <h3 class="display-5 mb-2 text-center">Panier</h3>
                     <p class="mb-5 text-center">
-                        <i class="nbItems text-info font-weight-bold"></i> items in your cart</p>
+                        <i class="nbItems text-info font-weight-bold"></i> Produit(s) dans le panier</p>
                     <table id="shoppingCart" class="table table-condensed table-responsive">
                         <thead>
                             <tr>
-                                <th style="width:50%">Product</th>
+                                <th style="width:50%">Produit</th>
                                 <th style="width:15%">Prix unitaire</th>
-                                <th style="width:10%">Quantity</th>
+                                <th style="width:10%">Quantité</th>
                                 <th style="width:10%"></th>
                                 <th class="text-center" style="width:80%">Sous Total</th>
                             </tr>
@@ -97,12 +98,12 @@
                 </div>
                 <div class="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
                     <a href="index.html">
-                        <i class="fas fa-arrow-left mr-2"></i> Continue Shopping</a>
+                        <i class="fas fa-arrow-left mr-2"></i> Continuer les achats</a>
                 </div>
             </div>
         </div>
     </section>
-        
+    </main >   
 
 
 
@@ -111,9 +112,7 @@
 
 
 
-<div class="alert alert-warning" role="alert">
-    Vous n'avez rien commandé!!!
-</div>
+
 
         <footer class="row text-center text-lg-left foot">
             <!-- Copyright -->

@@ -4,6 +4,15 @@
 }
 */
 
+@keyframes bounce{
+     from {transform: scale(0.9) translate3d(1px,7px,0); 
+    }
+    50%  {transform: scale(1.2) translate3d(1px,7px,0);
+    }
+    to   {transform: scale(0.9) translate3d(1px,7px,0);
+    }
+}
+
 h1 {
   margin-left: 1rem;
 
@@ -12,7 +21,10 @@ h1 {
 h2{
   font-size:1.5rem;
 }
-
+.titre{
+font-size:2rem;
+text-align: center;
+}
 body {
   background-color:#bdb4af; 
  
@@ -116,21 +128,27 @@ body {
   width : 100%;
 }
 .logoPanier{
+ 
   display:flex;
   flex-direction: column;
-   align-items: center;
+  align-items: center;
   text-align: center;
- width:2rem;
+  width:2rem;
 }
 .pastillePanier{
+ 
+  color:rgb(255, 255, 255);
   margin:0;
   display:flex;
   flex-direction: column;
-  font-size:0.6rem;
   font-weight: bolder;
-  background-color: rgb(218, 175, 97);
-  border-radius: 75%;
-  width: 1rem
+  background: linear-gradient(#f88b8b,#cc3434,#ec2a2a);
+  border-radius: 50%;
+  width: 1.4rem;
+  height:1.4rem;
+  animation: bounce 2s infinite;
+  z-index: -1;
+  box-shadow: 0 0 5px rgba(71, 3, 60, 0.5);
 }
 
 .btn-white{
@@ -153,4 +171,19 @@ body {
 
 #passCommand{
   color:white
+}
+
+.validCommand{
+  justify-content: center;
+  align-items: center;
+}
+
+.email{
+      flex-direction: column;
+}
+.reussite{
+  margin-top: 10rem;
+}
+.echec{
+  margin-top: 10rem;
 }

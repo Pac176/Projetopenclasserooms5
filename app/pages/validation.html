@@ -21,8 +21,8 @@
 
    
 
-    <script  src="/app/js/panier.js"></script>
-    <script defer src="/app/js/validation.js"></script>
+  
+    <script type="module" defer src="/app/js/validation.js"></script>
 
     
     
@@ -52,7 +52,7 @@
                 </ul>
 
                 <div class="logoPanier">
-                    <p class="pastillePanier"></p>
+                   
                     <a href="panier.html">
                         <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-cart2 text-dark"
                             fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -66,21 +66,22 @@
     </header>
     <main>
         <section class="validation"><br><br><br><br>
-<h2>Formulaire de validation</h2><br>
+<h2 class="titre">Formulaire de validation</h2><br>
     <h3>Recapitulatif de la commande</h3><br>
-        <div style="border:solid 1px black;" class="col-md-8 mb-8">
+        <div  class="col-md-8 mb-8">
             <div class="nbArticles">nb article(s):</div>
+            <div class="qteOurs">Quantité:</div>
             <div class="totalCommande">total</div>
             <a href="panier.html">Retour au panier</a>
         </div><br>
     <h3>Coordonnees</h3>
-        <form id="order-form" class="form-row">
-             <div class="col-md-8 mb-6">
+        <form  id="order-form" class="form-row " >
+             <div class="col-md-12  mb-12">
                 <div class="form-row">
                     <div class="col-md-6 mb-6">
                         <label for=""></label>
-                        <input type="text"   title="votre prenom" pattern="[\D]{1,10}" class="form-control" id="firstName" placeholder="First name" autofocus
-                         required   >
+                        <input type="text"    title="votre prenom" pattern="[\D]{1,10}" class="form-control" id="firstName" placeholder="First name" autofocus
+                         required >
                         <div class="">
                             Please provide your first name.
                         </div>
@@ -88,7 +89,7 @@
                     <div class="col-md-6 mb-6">
                         <label for=""></label>
                         <input type="text" title="votre nom" pattern="[\D]+" class="form-control" id="lastName" placeholder="Last name"
-                             required >
+                         required>
                         <div class="">
                         Please provide your last name.
                         </div>
@@ -97,7 +98,7 @@
                 <div class="form-row">
                     <div class="col-md-6 mb-6">
                         <label for=""></label>
-                        <input type="text"  pattern="[\w]+"  class="form-control" id="address" placeholder="adresse" required >
+                        <input type="text"  pattern="[\D]+" class="form-control" id="address" placeholder="adresse"  required>
                         <div class="">
                             Please provide a valid address.
                         </div>
@@ -119,14 +120,16 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="">@</span>
                             </div>
-                            <input type="email" pattern="[a-z]+\.[a-z]{1,10}@.{1,15}" class="form-control" id="email"   placeholder="adresse email" aria-describedby="" required>
+                            <input type="email" pattern="[a-z]+\.[a-z]{1,10}@.{1,15}" class="form-control email" id="email"   placeholder="adresse email"  
+                            required>
                             <div class="">
                                 Please provide an email.
                             </div>
                         </div>
                     </div>
                 </div><br><br>
-                <button class="btn btn-success btn-sm validCommand"  type="submit">Valider la commande</button> <button class="btn btn-danger btn-sm annule" onclick="postData()" type="submit">annuler la commande</button><br><br>
+               <div class="text-center"><button class="btn btn-success btn-sm validCommand center-block" type="submit">Valider la commande</button> <button
+                class="btn btn-danger btn-sm annule" type="text">annuler la commande</button><br><br></div>
                 </div>
              </form>
         </section><br><br>
@@ -137,6 +140,7 @@
             </div>
             <!-- Copyright -->
         </footer>
+    </main>
 </body>
 
 </html>
