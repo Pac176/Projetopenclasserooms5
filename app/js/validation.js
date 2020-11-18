@@ -1,16 +1,60 @@
 
+let commandUser;
+let valid = [false]
+
+//////////////////requete Post pour envoyer commandUser(contact + products)///////////////////////////////////
+
+async function postData() {
+    try {
+        const validCommande = await fetch("http://localhost:3000/api/teddies/order", {
+        method: 'POST', headers: {'Content-Type': 'application/json'},body: JSON.stringify(commandUser)
+        })
+        if (validCommande.status == 200 || validCommande.status == 201) {
+        let response = await validCommande.json();
+    let validation = document.querySelector(".validation")
+    validation.setAttribute("class","alert alert-success reussite")
+    validation.innerHTML=`<h4 class="alert-heading text-center">Bien joué!</h4>
+                    <p>Apres plus de 2 mois d'un dur labeur tu peux enfin commander tes nounours, ton numero de commande est le: </p>
+                    <hr>
+                    <p class="mb-0">${response.orderId}</p>`
+       
+        } else {
+            let echec = document.querySelector(".validation")
+    echec.setAttribute("class","alert alert-danger echec")
+    echec.innerHTML=`<h4 class="alert-heading">Echec!</h4>
+                    <p>problème d'envoi</p>
+                    <hr>
+                    <p class="mb-0">Try again!!</p>`
+       
+   }
+     
+    } catch {
+        let echec = document.querySelector(".validation")
+    echec.setAttribute("class","alert alert-danger echec")
+    echec.innerHTML=`<h4 class="alert-heading">Echec!</h4>
+                    <p>catch</p>
+                    <hr>
+                    <p class="mb-0">Try again!!</p>`
+       
+    }
+} 
+
+//////////////////////////bouton de validation//////////////////////////////////////////////
+
+
+export function validation() {
+    
 
 let contact = {}
 let products = []
-let valid = [false]
-let commandUser = { contact, products }
+   
 let nbArticles = document.querySelector(".nbArticles")
 let totalCommand = document.querySelector(".totalCommande")
 let qteOurs = document.querySelector(".qteOurs")
 qteOurs.innerHTML = `Quantité: ${(localStorage.getItem("Quantité"))}`
 nbArticles.innerHTML = `Nombre d'item(s): ${parseInt(localStorage.getItem("nombreitem"))}`
 totalCommand.innerHTML = `prix total: ${parseInt(localStorage.getItem("total"))}€`
-let validCommand =document.querySelector(".validCommand")
+
 let formControl = document.querySelectorAll(".form-control")
 
 
@@ -20,47 +64,7 @@ let formControl = document.querySelectorAll(".form-control")
 products.push(JSON.parse(localStorage.getItem("cart")))
 
 
-//////////////////requete Post pour envoyer commandUser(contact + products)///////////////////////////////////
 
-async function postData() {
-    try {
-        const validCommande = await fetch("http://localhost:3000/api/teddies/ordeR", {
-        method: 'POST', headers: {'Content-Type': 'application/json'},body: JSON.stringify(commandUser)
-        })
-    let response = await validCommande.json();
-    let validation = document.querySelector(".validation")
-    validation.setAttribute("class","alert alert-success reussite")
-    
-    validation.innerHTML=`<h4 class="alert-heading text-center">Bien joué!</h4>
-                    <p>Apres plus de 2 mois d'un dur labeur tu peux enfin commander tes nounours, ton numero de commande est le: </p>
-                    <hr>
-                    <p class="mb-0">${response.orderId}</p>`
-        
-    } catch {
-        let echec = document.querySelector(".validation")
-    echec.setAttribute("class","alert alert-danger echec")
-      
-    echec.innerHTML=`<h4 class="alert-heading">Echec!</h4>
-                    <p>Le serveur est capricieux et te fais attendre!</p>
-                    <hr>
-                    <p class="mb-0">Try again!!</p>`
-    }
-} 
-
-//////////////////////////bouton de validation//////////////////////////////////////////////
-
-let form = document.querySelector("#order-form");
-form.addEventListener("submit", function (event) {
-    event.preventDefault()
-})
-    
-
-
-validCommand.addEventListener("click", function () {
-     if (valid.includes(false)){
-       alert("veuiller remplir le formulaire")
-    } else {setTimeout(function(){ postData(); },1500)}
-    })
 
 
 ///////////////////////////annulation commande ///////////////////////////////////////////////
@@ -81,10 +85,11 @@ for (let i = 0; i < formControl.length; i++) {
    }
  
 for (let i = 0; i < formControl.length; i++) {
-    formControl[i].addEventListener("focusout", function () {
-        console.log(contact)
-        console.log(valid)
+    formControl[i].addEventListener("change", function () {
+        
+    console.log(commandUser)
         let val = formControl[i].validity
+        console.log(val)
             valid[i] = val.valid
         if (formControl[i].value == "") {
             formControl[i].classList = "form-control is-invalid";
@@ -105,14 +110,37 @@ for (let i = 0; i < formControl.length; i++) {
               valid[i]= formControl[i].checkValidity()
               contact[`${formControl[i].id}`] = `${formControl[i].value}`
          } else {valid[i]= formControl[i].checkValidity()}
+    }  commandUser = { contact, products }
+   }) 
     } 
-   })
- }    
+   
+}
+ 
 
 
 
 
 
+
+
+export function btnValid() {
+  
+let validCommand =document.querySelector(".validCommand")
+let form = document.querySelector("#order-form");
+form.addEventListener("submit", function (event) {
+    event.preventDefault()
+})
+    
+
+
+validCommand.addEventListener("click", function () {
+     if (valid.includes(false)){
+       alert("veuiller remplir le formulaire")
+     } else { setTimeout(function () { postData(); },1500)}
+    })
+
+
+}
 
 
 

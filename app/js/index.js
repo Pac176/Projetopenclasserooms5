@@ -27,10 +27,13 @@ let urlTeddies = "http://localhost:3000/api/teddies";      // adresse API
 ////////////fonction asynchrone permettant d'utiliser await derriere l'API fetch/////////////////////
 
  export async function getDataFromApi() {
-   
-      const reponse = await fetch(urlTeddies);
+      try {const reponse = await fetch(urlTeddies);
       let products = await reponse.json();
-       return products 
+      return products 
+        
+      } catch (error) {
+        alert (error.message)
+      }
  
  }
 //////////////////////fonction affichage liste products////////////////////////////////
@@ -82,12 +85,12 @@ for (let card of cardListe) {
 
 
 
-////////////////////////////////l/////////////////
+////////////////////////////////fonction Page index/////////////////
 
 export function pageIndex() {
 getDataFromApi().then(function (products) {
    showproductList(products); //appel de la fonction listeproducts 
-  choixproduct();              //appel de la fonction survol
+    choixproduct();              //appel de la fonction survol
   
      
     

@@ -6,7 +6,7 @@ let cartClass = new Cart()
 
 
 
-function displayCart() {          /////////////////////////////////Fonction affichage cart
+export function displayCart() {          /////////////////////////////////Fonction affichage cart
    
     let nbItems = document.querySelector('.nbItems');
     let passCommand = document.querySelector("#passCommand")
@@ -53,7 +53,7 @@ function displayCart() {          /////////////////////////////////Fonction affi
             cartClass.deleteFromCart() /////////////////////////appel possibilité d'effacer 
         
     } else {
-        let panier = document.querySelector(".panier")
+        let panier = document.querySelector(".panier")////////////////////////////////////si panier vide
         panier.innerHTML = `<div class="alert alert-warning" role="alert">
                                      Vous n'avez rien commandé!!!
                                                                     </div>`}
@@ -62,7 +62,7 @@ function displayCart() {          /////////////////////////////////Fonction affi
 
 }
         
-displayCart()
+
          
         
         

@@ -73,7 +73,7 @@ export function showProductDetail(productFromApi) {
     }  
   }) 
 }
-////////////////////////////////////////////appel de la requete puis affichage produit
+////////////////////////////////////////////fonction page produit
 
 export function pageProduct(){
 getDataIdFromApi().then(function (product) {

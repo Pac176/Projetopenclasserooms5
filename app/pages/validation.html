@@ -19,13 +19,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap" rel="stylesheet">
 
-   
-
+ 
   
-    <script type="module" defer src="/app/js/validation.js"></script>
+    <script type="module" defer src="/app/js/app.js"></script>
 
-    
-    
+      
 
 
     <link rel="stylesheet" href="style.css">
@@ -80,15 +78,15 @@
                 <div class="form-row">
                     <div class="col-md-6 mb-6">
                         <label for=""></label>
-                        <input type="text"    title="votre prenom" pattern="[\D]{1,10}" class="form-control" id="firstName" placeholder="First name" autofocus
-                         required >
+                        <input type="text"    title="votre prenom" pattern="\D{2,10}" class="form-control" id="firstName" placeholder="First name" autofocus
+                         required>
                         <div class="">
                             Please provide your first name.
                         </div>
                     </div>
                     <div class="col-md-6 mb-6">
                         <label for=""></label>
-                        <input type="text" title="votre nom" pattern="[\D]+" class="form-control" id="lastName" placeholder="Last name"
+                        <input type="text" title="votre nom" pattern="\D+" class="form-control" id="lastName" placeholder="Last name"
                          required>
                         <div class="">
                         Please provide your last name.
@@ -98,7 +96,7 @@
                 <div class="form-row">
                     <div class="col-md-6 mb-6">
                         <label for=""></label>
-                        <input type="text"  pattern="[\D]+" class="form-control" id="address" placeholder="adresse"  required>
+                        <input type="text"  pattern="\d+\s\D+" class="form-control" id="address" placeholder="adresse"  required>
                         <div class="">
                             Please provide a valid address.
                         </div>
