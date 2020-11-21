@@ -178,8 +178,15 @@ body {
   align-items: center;
 }
 
+footer {
+  position:fixed;
+  bottom:0;
+  width:100%
+}
+
+
 .email{
-      flex-direction: column;
+  flex-direction: column;
 }
 .reussite{
   margin-top: 10rem;

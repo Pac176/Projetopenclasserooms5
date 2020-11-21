@@ -48,9 +48,10 @@ export function displayCart() {          /////////////////////////////////Foncti
                                             </div>
                                         </td>`;
             
-        }   cartClass.prixTotal() /////////////////////////////appel prix total
+        }   cartClass.prixTotal /////////////////////////////appel prix total
             cartClass.cartNotification /////////////////////////appel notification
-            cartClass.deleteFromCart() /////////////////////////appel possibilité d'effacer 
+        cartClass.deleteFromCart() /////////////////////////appel possibilité d'effacer 
+        
         
     } else {
         let panier = document.querySelector(".panier")////////////////////////////////////si panier vide

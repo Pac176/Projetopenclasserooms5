@@ -7,7 +7,7 @@ let cartClass = new Cart()
 cartClass.cartNotification    // notification panier
 let url = window.location.pathname
 
-////////////////////////////////requete + fonction liste + fonction survol /////////////////
+
 
  
  

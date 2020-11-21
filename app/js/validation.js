@@ -127,13 +127,13 @@ export function btnValid() {
   
 let validCommand =document.querySelector(".validCommand")
 let form = document.querySelector("#order-form");
-form.addEventListener("submit", function (event) {
+form.addEventListener("submit", () => {
     event.preventDefault()
 })
     
 
 
-validCommand.addEventListener("click", function () {
+validCommand.addEventListener("click",  () =>{
      if (valid.includes(false)){
        alert("veuiller remplir le formulaire")
      } else { setTimeout(function () { postData(); },1500)}
