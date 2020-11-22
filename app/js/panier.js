@@ -48,9 +48,9 @@ export function displayCart() {          /////////////////////////////////Foncti
                                             </div>
                                         </td>`;
             
-        }   cartClass.prixTotal /////////////////////////////appel prix total
-            cartClass.cartNotification /////////////////////////appel notification
-        cartClass.deleteFromCart() /////////////////////////appel possibilité d'effacer 
+            }   cartClass.prixTotalSelonQte /////////////////////////////appel prix total
+                cartClass.cartNotification /////////////////////////appel notification
+                cartClass.deleteFromCart() /////////////////////////appel possibilité d'effacer 
         
         
     } else {

@@ -6,12 +6,11 @@ export class Cart {
         this.products = []
         this.products = JSON.parse(localStorage.getItem("cart"))
     }
-
-    ///////////////////////////lien vers validation de commande  
+///////////////////////////lien vers validation de commande  
     validCommand() {
         document.location.href = "http://127.0.0.1:5500/app/pages/validation.html"
     }
-    //////////////////////////pastille notification
+//////////////////////////pastille notification
     get cartNotification() {
         this.products = JSON.parse(localStorage.getItem("cart"))
         /////////////////////////////si produit dans localstorage
@@ -31,17 +30,7 @@ export class Cart {
             }
         }
     }
-    /////////////////////////envoi sur localstorage de Quantité pour utilisation dans la page formulaire  
-    get qteOursInLocalStorage() {
-        let qte = []
-        let nbOurs = document.querySelectorAll(".nbOurs");
-        for (let i = 0; i < nbOurs.length; i++) {
-            qte[i] = parseInt(nbOurs[i].value)
-            const reducer = (accumulator, currentValue) => parseInt(accumulator) + parseInt(currentValue);
-            localStorage.setItem("Quantité", qte.reduce(reducer))
-        }
-    }
-    ////////////////////////effacer item du panier
+////////////////////////effacer item du panier
     deleteFromCart() {
         let divpanier = document.querySelector(".products")
         let reset = document.querySelectorAll(".reset");
@@ -74,7 +63,9 @@ export class Cart {
             })
         }
     }
-    get prixTotalInLocalstorage() {
+////////////////////////fonction calcul et envoi sur localstorage
+    get prixTotalQteInLocalstorage() {
+        let qte = []
         let prixPanier = [] 
         let prixTotal = document.querySelector(".prixTotal ");
         let subTotal = document.querySelectorAll(".prixTotalOurs");
@@ -86,51 +77,20 @@ export class Cart {
             const reducer = (accumulator, currentValue) => parseInt(accumulator) + parseInt(currentValue);
             prixTotal.innerHTML = prixPanier.reduce(reducer) + "€";
             localStorage.setItem("total", prixTotal.innerHTML) ////envoi sur le localstorage pour utilisation
-            this.qteOursInLocalStorage
+            qte[i] = parseInt(nbOurs[i].value)
+            const quantite = (accumulator, currentValue) => parseInt(accumulator) + parseInt(currentValue);
+            localStorage.setItem("Quantité", qte.reduce(quantite))////envoi sur le localstorage pour utilisation
         }
     }
-
-///////////////////////Fonction calcul du total commande
-    get prixTotal() {
+///////////////////////Fonction calcul du total commande avec variation qte
+    get prixTotalSelonQte() {
         //////////si il y a des produits dans le panier avec par defaut quantité a 1
         if (this.products.length > 0) {
             let nbOurs = document.querySelectorAll(".nbOurs");
-            // let prixPanier = []   /////prix des differents items du panier
-            // for (let i = 0; i < this.products.length; i++) {
-            //     prixPanier[i] = `${this.products[i].price / 100}`//////////////////recuperation des prix pour calcul total
-            // }
-            
-           
-           
-            
-              /////prix des differents items du panier
-            //let nbItems = document.querySelector(".nbItems")
-            //qte[0] = nbItems.innerHTML
-            ////////////////////////////////////// methode reduce sur la tableau de prix pour avoir la somme
-            // const reducer = (accumulator, currentValue) => parseInt(accumulator) + parseInt(currentValue);
-            // prixTotal.innerHTML = prixPanier.reduce(reducer) + "€";
-            // localStorage.setItem("total", prixTotal.innerHTML) ////envoi sur le localstorage pour utilisation
-            //////////////////////////////////////calcul des sous totaux pour recalcul du total en fonction des quantités
             for (let i = 0; i < nbOurs.length; i++) {
-
-                
-                this.prixTotalInLocalstorage
-                // subTotal[i].innerHTML = nbOurs[i].value * parseInt(prixOurs[i].innerHTML) + "€";
-                // prixPanier[i] =  parseInt(subTotal[i].innerHTML)//////////////////recuperation des prix pour calcul total
-                // const reducer = (accumulator, currentValue) => parseInt(accumulator) + parseInt(currentValue);
-                // prixTotal.innerHTML = prixPanier.reduce(reducer) + "€";
-                // localStorage.setItem("total", prixTotal.innerHTML) ////envoi sur le localstorage pour utilisation
-                // this.qteOursInLocalStorage
-
-
-                nbOurs[i].addEventListener("change", () => {
-                        this.prixTotalInLocalstorage
-                    // subTotal[i].innerHTML = nbOurs[i].value * parseInt(prixOurs[i].innerHTML) + "€";
-                    // prixPanier[i] = parseInt(subTotal[i].innerHTML);
-                    // const reducer = (accumulator, currentValue) => parseInt(accumulator) + parseInt(currentValue);
-                    // prixTotal.innerHTML = prixPanier.reduce(reducer) + "€";
-                    // localStorage.setItem("total", prixTotal.innerHTML);
-                    // this.qteOursInLocalStorage
+                this.prixTotalQteInLocalstorage
+            nbOurs[i].addEventListener("change", () => {
+                this.prixTotalQteInLocalstorage
                })
             }
         } 
