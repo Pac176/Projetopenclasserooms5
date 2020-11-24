@@ -21,7 +21,7 @@
 <body  class="container-fluid">
       <header class="row bg-light">
         <nav class="col navbar navbar-expand-md bg-whitek navbar-light ">
-            <a class="navbar-brand" href="index.html"><img src="/ressources/logo1.svg" alt="Site logo">
+            <a class="navbar-brand" href="index.html"><img src="../ressources/logo1.svg" alt="Site logo">
                 <h1>Orinoco</h1>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
@@ -67,17 +67,17 @@
                 <div class="form-row">
                     <div class="col-md-6 mb-6">
                         <label for=""></label>
-                        <input type="text"    title="votre prenom" pattern="\D{2,10}" class="form-control" id="firstName" placeholder="First name" autofocus
+                        <input type="text"    title="votre prenom" pattern="\D{2,10}" class="form-control is-invalid" id="firstName" placeholder="First name" autofocus
                          required>
-                        <div class="">
+                        <div class="invalid-feedback">
                             Please provide your first name.
                         </div>
                     </div>
                     <div class="col-md-6 mb-6">
                         <label for=""></label>
-                        <input type="text" title="votre nom" pattern="\D+" class="form-control" id="lastName" placeholder="Last name"
+                        <input type="text" title="votre nom" pattern="\D+" class="form-control is-invalid" id="lastName" placeholder="Last name"
                          required>
-                        <div class="">
+                        <div class="invalid-feedback">
                         Please provide your last name.
                         </div>
                     </div>
@@ -85,15 +85,15 @@
                 <div class="form-row">
                     <div class="col-md-6 mb-6">
                         <label for=""></label>
-                        <input type="text"  pattern="([\d]+)?(\s)?\D+" class="form-control" id="address" placeholder="adresse"  required>
-                        <div class="">
+                        <input type="text"  pattern="([\d]+)?(\s)?\D+" class="form-control is-invalid" id="address" placeholder="adresse"  required>
+                        <div class="invalid-feedback">
                             Please provide a valid address.
                         </div>
                     </div>
                     <div class="col-md-6 mb-6">
                         <label for=""></label>
-                        <input type="text"  pattern="[\D]+" class="form-control" id="city" value="" placeholder="ville" required>
-                        <div class="">
+                        <input type="text"  pattern="[\D]+" class="form-control is-invalid" id="city" value="" placeholder="ville" required>
+                        <div class="invalid-feedback">
                             Please provide a valid city.
                         </div>
                     </div>
@@ -107,9 +107,9 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="">@</span>
                             </div>
-                            <input type="email" pattern="[a-z]+\.[a-z]{1,10}@.{1,15}" class="form-control email" id="email"   placeholder="adresse email"  
+                            <input type="email" pattern="[a-z]+\.[a-z]{1,10}@.{1,15}" class="form-control is-invalid email" id="email"   placeholder="adresse email"  
                             required>
-                            <div class="">
+                            <div class="invalid-feedback">
                                 Please provide an email.
                             </div>
                         </div>

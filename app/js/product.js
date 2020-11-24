@@ -37,12 +37,13 @@ export function showProductDetail(productFromApi) {
     domproduct.innerHTML = `<div class="card cardDetail" style="text-decoration: none; color:black; display:flex;  ">
                                             <div class="card-body">
                                               <h2 style="font-family: 'Schoolbell', cursive;" class="card-title text-center">${productFromApi.name}</h2>
-                                              <img id="${productFromApi._id}" class="card-img-top" src="${productFromApi.imageUrl}" alt="..."><br>
+                                              <img style="width:50% justify-content:center" id="${productFromApi._id}" class="card-img-top" src="${productFromApi.imageUrl}" alt="..."><br>
                                               
                                               <p><u>Description du produit:</u></p>
-                                              <p class="card-text "><em>${productFromApi.description}</p>
+                                              <p class="card-text description"><em>${productFromApi.description}</em></p>
+                                              <div class="selecteurOption" ><select class="selectpicker" style="width:75%;"></select></div>
                                               <p class="card-text prix"><strong>${productFromApi.price / 100}€</strong></p>
-                                              <select class="selectpicker" style="width:75%;"></select><br><br>
+                                              
                                               <button id="btn_panier" type="button" class="btn btn-outline-success">Ajouter au panier</button>
                                             </div>
                                         </div>`
@@ -78,9 +79,6 @@ export function showProductDetail(productFromApi) {
 export function pageProduct(){
 getDataIdFromApi().then(function (product) {
 showProductDetail(product); //appel de la fonction productsdetail
-
-})
-
-
+    })
 }
 

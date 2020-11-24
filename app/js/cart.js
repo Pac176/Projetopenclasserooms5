@@ -48,17 +48,15 @@ export class Cart {
                         let logoPanier = document.querySelector(".logoPanier")
                         let pastille = document.querySelector(".pastillePanier")
                         logoPanier.removeChild(pastille)
-                        let panier = document.querySelector(".panier")
-                        panier.innerHTML = `<div class="alert alert-warning" role="alert">
-                                     Panier vide!
-                                                                    </div>`
+                        location.href = "http://127.0.0.1:5500/app/pages/index.html"
                     }
                     ////////////////si pas dernier alors juste effacer l'item
                 } else if (confirm("Etes vous sur de vouloir supprimer ce produit?")) {
                     localStorage.setItem("cart", JSON.stringify(this.products))
                     divpanier.removeChild(produit[i]);
-                    this.prixTotal
+                    this.prixTotalSelonQte
                     this.cartNotification
+                    this.nbItems
                 }
             })
         }
@@ -103,12 +101,12 @@ export class Cart {
          ///////////////je test pour eviter une répétition du meme produit   
             let test;
             for (let product of this.products) {
-                if (product._id == value._id) {
-                    return test = true
+                if (product._id == value._id) {alert("vous avez deja ce produit dans le panier")
+                    return test = true //arret de la boucle des le true
                 }
             }
         ///////////////si produit present renvoi au localstorage
-                if (test == true) {
+            if (test == true) {
                     localStorage.setItem("cart", JSON.stringify(this.products))
                 } else {
         ///////////////sinon ajouter le produit au tableau et renvoi sur localstorage
@@ -117,12 +115,17 @@ export class Cart {
                 }
         //////////////////////si c'est le premier produit alors envoi sur localstorage
         } else {
+            
             localStorage.setItem("cart", JSON.stringify([value]))
            
         }
         
     }
+
+get nbItems() {
+     let nbItems = document.querySelector('.nbItems');
+    nbItems.innerHTML = this.products.length
+    localStorage.setItem("nombreitem", nbItems.innerHTML)
 }
-
-
+}
    
