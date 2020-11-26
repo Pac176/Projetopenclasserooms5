@@ -1,4 +1,7 @@
 
+let cartClass = new Cart()
+cartClass.cartNotification    // notification panier
+
 let urlTeddies = "http://localhost:3000/api/teddies";      // adresse API
  
 //Utilisation d'httprequest pour info
@@ -83,7 +86,7 @@ for (let card of cardListe) {
 
 ////////////////////////////////fonction Page index/////////////////
 
-export function pageIndex() {
+function pageIndex() {
 getDataFromApi().then(function (products) {
    showproductList(products); //appel de la fonction listeproducts 
     choixproduct();              //appel de la fonction survol
@@ -91,3 +94,4 @@ getDataFromApi().then(function (products) {
  })
 }
 
+pageIndex()
